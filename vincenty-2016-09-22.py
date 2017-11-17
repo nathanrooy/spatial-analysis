@@ -1,9 +1,9 @@
 #------------------------------------------------------------------------------+
 #
+#   Nathan A. Rooy
+#   2016-SEP-30
 #   Solve the inverse Vincenty's formulae
 #   https://en.wikipedia.org/wiki/Vincenty%27s_formulae
-#
-#
 #
 #------------------------------------------------------------------------------+
 
@@ -21,7 +21,6 @@ from math import tan
 #--- MAIN ---------------------------------------------------------------------+
 
 class vincenty_inverse:
-
     def __init__(self,coord1,coord2,maxIter=200,tol=10**-12):
 
         #--- CONSTANTS ------------------------------------+
@@ -30,78 +29,62 @@ class vincenty_inverse:
         f=1/298.257223563                       # flattening of the ellipsoid (WGS-84)
         b=(1-f)*a
 
-        phi_1,L_1,=coord1                        # (lat=L_?,lon=phi_?)
+        phi_1,L_1,=coord1                       # (lat=L_?,lon=phi_?)
         phi_2,L_2,=coord2                  
 
-        U_1=atan((1-f)*tan(radians(phi_1)))
-        U_2=atan((1-f)*tan(radians(phi_2)))
+        u_1=atan((1-f)*tan(radians(phi_1)))
+        u_2=atan((1-f)*tan(radians(phi_2)))
 
         L=radians(L_2-L_1)
 
         Lambda=L                                # set initial value of lambda to L
 
-        sinU1=sin(U_1)
-        cosU1=cos(U_1)
-        sinU2=sin(U_2)
-        cosU2=cos(U_2)
-
-##        if lon1==lon2 and lat1==lat2:
-##            return 0.0
+        sin_u1=sin(u_1)
+        cos_u1=cos(u_1)
+        sin_u2=sin(u_2)
+        cos_u2=cos(u_2)
 
         #--- BEGIN ITERATIONS -----------------------------+
-
+        self.iters=0
         for i in range(0,maxIter):
-            cosLambda=cos(Lambda)
+            self.iters+=1
             
-            sinLambda=sin(Lambda)
-            
-            sinSigma=sqrt((cosU2*sin(Lambda))**2 +
-                          (cosU1*sinU2-sinU1*cosU2*cosLambda)**2)
-            
-            cosSigma=sinU1*sinU2+cosU1*cosU2*cosLambda
-
-            sigma=atan2(sinSigma,cosSigma)
-
-            sin_alpha=(cosU1*cosU2*sinLambda)/sinSigma
-
-            cosSq_alpha=1-sin_alpha**2
-
-            cos2Sig_m=cosSigma-((2*sinU1*sinU2)/cosSq_alpha)
-
-            C=(f/16)*cosSq_alpha*(4+f*(4-3*cosSq_alpha))
-            
+            cos_lambda=cos(Lambda)
+            sin_lambda=sin(Lambda)
+            sin_sigma=sqrt((cos_u2*sin(Lambda))**2+(cos_u1*sin_u2-sin_u1*cos_u2*cos_lambda)**2)
+            cos_sigma=sin_u1*sin_u2+cos_u1*cos_u2*cos_lambda
+            sigma=atan2(sin_sigma,cos_sigma)
+            sin_alpha=(cos_u1*cos_u2*sin_lambda)/sin_sigma
+            cos_sq_alpha=1-sin_alpha**2
+            cos2_sigma_m=cos_sigma-((2*sin_u1*sin_u2)/cos_sq_alpha)
+            C=(f/16)*cos_sq_alpha*(4+f*(4-3*cos_sq_alpha))
             Lambda_prev=Lambda
-            Lambda=L+(1-C)*f*sin_alpha*(sigma+C*sinSigma*(cos2Sig_m+C*cosSigma*(-1+2*cos2Sig_m**2)))
+            Lambda=L+(1-C)*f*sin_alpha*(sigma+C*sin_sigma*(cos2_sigma_m+C*cos_sigma*(-1+2*cos2_sigma_m**2)))
 
             # successful convergence
             diff=abs(Lambda_prev-Lambda)
             if diff<=tol:
                 break
+            
+        u_sq=cos_sq_alpha*((a**2-b**2)/b**2)
+        A=1+(u_sq/16384)*(4096+u_sq*(-768+u_sq*(320-175*u_sq)))
+        B=(u_sq/1024)*(256+u_sq*(-128+u_sq*(74-47*u_sq)))
+        delta_sig=B*sin_sigma*(cos2_sigma_m+0.25*B*(cos_sigma*(-1+2*cos2_sigma_m**2)-(1/6)*B*cos2_sigma_m*(-3+4*sin_sigma**2)*(-3+4*cos2_sigma_m**2)))
 
-        uSq=cosSq_alpha*((a**2-b**2)/b**2)
-        A=1+(uSq/16384)*(4096+uSq*(-768+uSq*(320-175*uSq)))
-        B=(uSq/1024)*(256+uSq*(-128+uSq*(74-47*uSq)))
-        deltaSig=B*sinSigma*(cos2Sig_m+0.25*B*(cosSigma*(-1+2*cos2Sig_m**2)-(1/6)*B*cos2Sig_m*(-3+4*sinSigma**2)*(-3+4*cos2Sig_m**2)))
-
-        self.meters=b*A*(sigma-deltaSig)            # output distance in meters     
-        self.km=self.meters/1000                    # output distance in kilometers
-        self.mm=self.meters*1000                    # output distance in millimeters
-        self.miles=self.meters*0.000621371          # output distance in miles
-        self.n_miles=self.miles*(6080.20/5280)      # output distance in nautical miles
-        self.feet=self.miles*5280                   # output distance in feet
-        self.inches=self.feet*12                    # output distance in inches
-        self.yards=self.feet/3                      # output distance in yards
+        self.m=b*A*(sigma-delta_sig)                 # output distance in meters     
+        #self.km=self.meters/1000                    # output distance in kilometers
+        #self.mm=self.meters*1000                    # output distance in millimeters
+        #self.miles=self.meters*0.000621371          # output distance in miles
+        #self.n_miles=self.miles*(6080.20/5280)      # output distance in nautical miles
+        #self.ft=self.miles*5280                     # output distance in feet
+        #self.inches=self.feet*12                    # output distance in inches
+        #self.yards=self.feet/3                      # output distance in yards
 
 if __name__ == "__vincenty_inverse__":
     main()
 
-#--- EXAMPLES -----------------------------------------------------------------+
+#--- EXAMPLE ------------------------------------------------------------------+
         
-print vincenty_inverse([39.152501,-84.412977],[39.152505,-84.412946]).meters
-##print Haversine((-84.412977,39.152501),(-84.412946,39.152505)).feet
-##print Haversine((-84.412977,39.152501),(-84.412946,39.152505)).km
-##print Haversine((-84.412977,39.152501),(-84.412946,39.152505)).miles        
-      
+print vincenty_inverse([39.152501,-84.412977],[39.152505,-84.412946]).m
+          
 #--- END ----------------------------------------------------------------------+
-
-
