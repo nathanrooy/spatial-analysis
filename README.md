@@ -14,9 +14,10 @@ Calculate the distance between two longitude/latitude pairs using the
 
 ```py
 >>> from spatial import haversine
->>> p1 = []                 # p1=[longitude_1, latitude_1]
->>> p2 = []                 # p2=[longitude_2, latitude_2]
->>> haversine(p1, p2).m()   # meters
+>>> p1 = [-84.4941318, 39.113223]	    # p1=[longitude_1, latitude_1]
+>>> p2 = [-81.4061265, 41.250386]     # p2=[longitude_2, latitude_2]
+>>> haversine(p1, p2).m()             # meters
+353922.9402484654
 ```
 In addition to `meters`, the following units can be specified:
 - `kilometers`
@@ -41,7 +42,8 @@ If more accuracy is needed than what the Haversine formula can provide, a good o
 >>> from spatial import vincenty_inverse as vi
 >>> p1 = [-84.4941318, 39.113223]	    # p1=[longitude_1, latitude_1]
 >>> p2 = [-81.4061265, 41.250386]     # p2=[longitude_2, latitude_2]
->>> vi(p1, p2).m()          # meters
+>>> vi(p1, p2).m()                    # meters
+354188.01859971555
 ```
 
 Just like the `haversine` method, `vincenty_inverse` supports `meters`,`kilometers`,`miles`,`nautical miles`,`yards`, and `feet` as seen below:
