@@ -29,10 +29,15 @@ In addition to `meters`, the following units can be specified:
 Example usage:
 ```py
 >>> haversine(p1, p2).km()  # kilometers
+353.9229402484654
 >>> haversine(p1, p2).mi()  # miles
+219.9174513051292
 >>> haversine(p1, p2).nm()  # nautical miles
+253.24660746694065
 >>> haversine(p1, p2).yd()  # yards
+387054.83402915805
 >>> haversine(p1, p2).ft()  # feet
+1161164.1428910822
 ```
 ### Vincenty Inverse
 
@@ -50,10 +55,15 @@ Just like the `haversine` method, `vincenty_inverse` supports `meters`,`kilomete
 
 ```py
 >>> vi(p1, p2).km()         # kilometers
+354.1880185997156
 >>> vi(p1, p2).mi()         # miles
+220.08216330532386
 >>> vi(p1, p2).nm()         # nautical miles
+253.4362820698921
 >>> vi(p1, p2).yd()         # yards
+387344.7272391767
 >>> vi(p1, p2).ft()         # feet
+1162033.8222521099
 ```
 Since Vincenty's inverse formulae is an iterative approach, it employs two methods for stopping. The first is to simply specify a maximum number of iterations using `maxIter` as seen below:
 ```py
