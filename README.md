@@ -40,7 +40,7 @@ If more accuracy is needed than what the Haversine formula can provide, a good o
 
 ```py
 >>> from spatial import vincenty_inverse as vi
->>> p1 = [-84.4941318, 39.113223]	    # p1=[longitude_1, latitude_1]
+>>> p1 = [-84.4941318, 39.113223]     # p1=[longitude_1, latitude_1]
 >>> p2 = [-81.4061265, 41.250386]     # p2=[longitude_2, latitude_2]
 >>> vi(p1, p2).m()                    # meters
 354188.01859971555
