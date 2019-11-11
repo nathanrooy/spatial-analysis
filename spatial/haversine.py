@@ -61,7 +61,7 @@ class Haversine:
         return self.m() * 0.000621371       # output distance in miles
 
     def nm(self):
-        return self.m() * (6080.20/5280.0)    # output distance in nautical miles
+        return self.m() * (6080.20/5280.0)  # output distance in nautical miles
 
     def yd(self):
         return self.m() * 1.0936132983      # output distance in yards
