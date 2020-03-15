@@ -69,7 +69,7 @@ Since Vincenty's inverse formulae is an iterative approach, it employs two metho
 ```py
 >>> vi(p1, p2, maxIter=500).m()           # meters
 ```
-The default value for `maxIter` is 250 iterations. The second stopping method specified by `tol`. When the iteration-to-iteration difference in distance residual drops below the value specified by `tol`, the iteration loop terminates. By default, this value is 10^-12.
+The default value for `maxIter` is 250 iterations. The second stopping method is specified using `tol`. When the iteration-to-iteration difference in distance residual drops below the value specified by `tol`, the iteration loop terminates. By default, this value is 10^-12.
 ```py
 >>> vi(p1, p2, tol=10**-10).m()           # meters
 ```
