@@ -1,4 +1,8 @@
 # spatial-analysis
+[![gh-actions-ci](https://img.shields.io/github/workflow/status/nathanrooy/spatial-analysis/ci?style=flat-square)](https://github.com/nathanrooy/spatial-analysis/actions?query=workflow%3Aci)
+[![GitHub license](https://img.shields.io/github/license/nathanrooy/spatial-analysis?style=flat-square)](https://github.com/nathanrooy/spatial-analysis/blob/master/LICENSE)
+[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/spatial-analysis.svg?style=flat-square)](https://codecov.io/gh/nathanrooy/spatial-analysis)
+
 Python scripts I use for the analysis of spatial data
 
 ## Installation
