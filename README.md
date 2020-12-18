@@ -1,4 +1,8 @@
 # spatial-analysis
+[![gh-actions-ci](https://img.shields.io/github/workflow/status/nathanrooy/spatial-analysis/ci?style=flat-square)](https://github.com/nathanrooy/spatial-analysis/actions?query=workflow%3Aci)
+[![GitHub license](https://img.shields.io/github/license/nathanrooy/spatial-analysis?style=flat-square)](https://github.com/nathanrooy/spatial-analysis/blob/master/LICENSE)
+[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/spatial-analysis.svg?style=flat-square)](https://codecov.io/gh/nathanrooy/spatial-analysis)
+
 Python scripts I use for the analysis of spatial data
 
 ## Installation
@@ -33,7 +37,7 @@ Example usage:
 >>> haversine(p1, p2).mi()  # miles
 219.9174513051292
 >>> haversine(p1, p2).nm()  # nautical miles
-253.24660746694065
+191.10309948621241
 >>> haversine(p1, p2).yd()  # yards
 387054.83402915805
 >>> haversine(p1, p2).ft()  # feet
@@ -59,7 +63,7 @@ Just like the `haversine` method, `vincenty_inverse` supports `meters`,`kilomete
 >>> vi(p1, p2).mi()         # miles
 220.08216330532386
 >>> vi(p1, p2).nm()         # nautical miles
-253.4362820698921
+191.24623034541875
 >>> vi(p1, p2).yd()         # yards
 387344.7272391767
 >>> vi(p1, p2).ft()         # feet
