@@ -33,7 +33,7 @@ Example usage:
 >>> haversine(p1, p2).mi()  # miles
 219.9174513051292
 >>> haversine(p1, p2).nm()  # nautical miles
-253.24660746694065
+191.10309948621241
 >>> haversine(p1, p2).yd()  # yards
 387054.83402915805
 >>> haversine(p1, p2).ft()  # feet
