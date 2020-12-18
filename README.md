@@ -59,7 +59,7 @@ Just like the `haversine` method, `vincenty_inverse` supports `meters`,`kilomete
 >>> vi(p1, p2).mi()         # miles
 220.08216330532386
 >>> vi(p1, p2).nm()         # nautical miles
-253.4362820698921
+191.24623034541875
 >>> vi(p1, p2).yd()         # yards
 387344.7272391767
 >>> vi(p1, p2).ft()         # feet
