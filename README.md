@@ -14,7 +14,7 @@ pip install git+https://github.com/nathanrooy/spatial-analysis
 
 ### Haversine
 Calculate the distance between two longitude/latitude pairs using the
-<a target="_blank" href="https://en.wikipedia.org/wiki/Haversine_formula">Haversine formula</a>. For more information on the math/implementation details, see this blog post here: https://nathanrooy.github.io/posts/2016-09-07/haversine-with-python/
+<a target="_blank" href="https://en.wikipedia.org/wiki/Haversine_formula">Haversine formula</a>. For more information on the math/implementation details, see this blog post [<a target="_blank" href="https://nathanrooy.github.io/posts/2016-09-07/haversine-with-python/">here</a>].
 
 ```py
 >>> from spatial import haversine
@@ -45,7 +45,7 @@ Example usage:
 ```
 ### Vincenty Inverse
 
-If more accuracy is needed than what the Haversine formula can provide, a good option is <a target="_blank" href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae">Vincenty's Inverse formulae</a>. For more information on the math/implementation details, see this blog post here: https://nathanrooy.github.io/posts/2016-12-18/vincenty-formula-with-python/
+If more accuracy is needed than what the Haversine formula can provide, a good option is <a target="_blank" href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae">Vincenty's Inverse formulae</a>. For more information on the math/implementation details, see this blog post [<a target="_blank" href="https://nathanrooy.github.io/posts/2016-12-18/vincenty-formula-with-python/">here</a>].
 
 ```py
 >>> from spatial import vincenty_inverse as vi
