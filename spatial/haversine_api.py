@@ -8,13 +8,15 @@
 #------------------------------------------------------------------------------+
 
 
-from ctypes import CDLL
-from ctypes import c_double
+from ctypes import c_double, CDLL
+from glob import glob
+from os import path
 from .utils import conversion_dict
 
 
 # initialize
-haversine_c = CDLL("/home/nathan/Public/venvs/venv_py3.10/lib64/python3.10/site-packages/spatial/haversine_c.cpython-310-x86_64-linux-gnu.so")
+so_path = glob(path.dirname(__file__) + "/haversine_c*")[0]
+haversine_c = CDLL(so_path)
 
 # specify signtures
 haversine_c.haversine.argtypes = [c_double, c_double, c_double, c_double]
