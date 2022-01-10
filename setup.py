@@ -18,6 +18,11 @@ setup(
             'spatial.haversine_c', 
             sources=['src/haversine.c'],
             language='c'
+        ),
+        Extension(
+            'spatial.vincenty_c', 
+            sources=['src/vincenty.c'],
+            language='c'
         )
     ]
 )
