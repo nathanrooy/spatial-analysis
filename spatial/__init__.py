@@ -1,2 +1,2 @@
-from .haversine_api import haversine
-from .vincenty_api import vincenty_inverse
+from .haversine import Haversine as haversine
+from .vincenty import vincenty_inverse as vincenty_inverse
