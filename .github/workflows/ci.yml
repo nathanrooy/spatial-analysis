@@ -29,7 +29,7 @@ jobs:
         pip install flake8 pytest
         pip install git+https://github.com/nathanrooy/spatial-analysis
     - name: Test with unittest
-      run: python -m unittest tests/unit.py
+      run: python tests/unit.py
     - name: Submit to codecov
       if: ${{ matrix.python-version == '3.8' }}
       run: |
