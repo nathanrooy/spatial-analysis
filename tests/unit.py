@@ -4,7 +4,7 @@ from spatial import haversine as h
 from spatial import vincenty_inverse as vi
 
 
-TOL = 1E-10
+TOL = 1E-9
 P1 = [-84.4941318, 39.113223]
 P2 = [-81.4061265, 41.250386]
 
@@ -18,7 +18,7 @@ class test_everything(unittest.TestCase):
         self.assertLess(abs(191.10309948621241 - h(P1, P2, units='nm')), TOL)
         self.assertLess(abs(387054.83402915805 - h(P1, P2, units='yd')), TOL)
         self.assertLess(abs(1161164.1428910822 - h(P1, P2, units='ft')), TOL)
-    
+
     def test_vincenty(self):
         self.assertLess(abs(354188.01859971555 - vi(P1, P2, units='m')),  TOL)
         self.assertLess(abs(354.1880185997156  - vi(P1, P2, units='km')), TOL)
