@@ -4,7 +4,7 @@ from spatial import haversine as h
 from spatial import vincenty_inverse as vi
 
 
-TOL = 1E-9
+TOL = 1E-8
 P1 = [-84.4941318, 39.113223]
 P2 = [-81.4061265, 41.250386]
 
