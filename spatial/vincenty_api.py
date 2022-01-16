@@ -1,13 +1,3 @@
-#------------------------------------------------------------------------------
-#
-#   Nathan A. Rooy
-#   Vincenty Inverse formula
-#   Created: 2016-SEP-30
-#   Updated: 2022-JAN
-#
-#------------------------------------------------------------------------------
-
-
 from _spatial import vincenty_inv as vi
 from .utils import conversion_dict
 
