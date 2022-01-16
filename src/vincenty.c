@@ -1,17 +1,18 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "vincenty.h"
 
-
-const double a = 6378137.0;             // radius at equator in meters (WGS-84)
-const double f = 1.0 / 298.257223563;   // flattening of the ellipsoid (WGS-84)
-const double b = (1 - f) * a;           // length of semi-minor axis   (WGS-84)
-const double DTOR = M_PI / 180.0;       // degrees -> radians
+double a = 6378137.0;             // radius at equator in meters (WGS-84)
+double f = 1.0 / 298.257223563;   // flattening of the ellipsoid (WGS-84)
 
 // https://en.wikipedia.org/wiki/Vincenty%27s_formulae#Inverse_problem
 
 
 double vincenty_inv(double l_1, double phi_1, double l_2, double phi_2,
     unsigned int maxIter, double tol) {
+    
+    double DTOR = M_PI / 180.0;       // degrees -> radians
+    double b = (1 - f) * a;           // length of semi-minor axis   (WGS-84)
     
     double u_1, u_2, sin_u1, cos_u1, sin_u2, cos_u2, cos_lambda, sin_lambda;
     double sin_sigma, cos_sigma, sigma, sin_alpha, cos_sq_alpha, cos2_sigma_m;
