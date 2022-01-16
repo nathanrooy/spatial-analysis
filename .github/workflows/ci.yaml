@@ -1,4 +1,4 @@
-name: Test
+name: ci
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -28,7 +28,7 @@ jobs:
         run: python -m unittest tests/unit.py
         
       - name: Submit to codecov
-        if: ${{ matrix.python-version == '3.8' }}
+        if: ${{ matrix.python-version == '3.8' && matrix.os == 'ubuntu-latest' }}
         run: |
           pip install coverage
           coverage run -m unittest tests/unit.py 

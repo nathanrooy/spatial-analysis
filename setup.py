@@ -15,14 +15,13 @@ setup(
     ],
     ext_modules = [
         Extension(
-            'spatial.haversine_c', 
-            sources=['src/haversine.c'],
+            "_spatial", 
+            sources=[
+                "src/_spatial.c",
+                "src/haversine.c",
+                "src/vincenty.c"
+            ],
             language='c'
         ),
-        Extension(
-            'spatial.vincenty_c', 
-            sources=['src/vincenty.c'],
-            language='c'
-        )
     ]
 )
