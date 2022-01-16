@@ -1,13 +1,3 @@
-#------------------------------------------------------------------------------
-#
-#   Nathan A. Rooy
-#   Haversine Formula
-#   Created: June, 2016
-#   Updated: Jan, 2022
-#
-#------------------------------------------------------------------------------
-
-
 from _spatial import haversine as h
 from .utils import conversion_dict
 
