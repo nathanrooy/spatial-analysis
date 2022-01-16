@@ -5,6 +5,8 @@
 const long R = 6371000;
 const double DTOR = M_PI / 180.0;
 
+double haversine(double, double, double, double);
+
 
 double haversine(double lng1, double lat1, double lng2, double lat2){
     double phi_1, phi_2;
